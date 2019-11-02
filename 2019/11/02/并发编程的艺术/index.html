@@ -79,12 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
+<meta name="description" content="避免死锁常见方法 避免一个线程同时获取多个锁 避免一个线程在锁内同时占用多个资源,尽量保证每个锁只占用一个资源 尝试使用定时锁,使用lock.tryLock(timeout)来代替使用内部锁机制 对于数据库锁，加锁和解锁必须在一个数据库连接里，否则会出现解锁失败的情况。  volatile定义Java语言规范第3版中对volatile的定义如下：Java编程语言允许线程访问共享变量，为了确保共享变">
+<meta property="og:type" content="article">
+<meta property="og:title" content="并发编程的艺术">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;02&#x2F;%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="避免死锁常见方法 避免一个线程同时获取多个锁 避免一个线程在锁内同时占用多个资源,尽量保证每个锁只占用一个资源 尝试使用定时锁,使用lock.tryLock(timeout)来代替使用内部锁机制 对于数据库锁，加锁和解锁必须在一个数据库连接里，否则会出现解锁失败的情况。  volatile定义Java语言规范第3版中对volatile的定义如下：Java编程语言允许线程访问共享变量，为了确保共享变">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="c:%5CUsers%5CXIYIFEN%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1572488682758.png">
+<meta property="og:image" content="c:%5CUsers%5CXIYIFEN%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1572512785719.png">
+<meta property="og:updated_time" content="2019-10-31T10:09:59.039Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:%5CUsers%5CXIYIFEN%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1572488682758.png">
 
 
 
@@ -114,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/11/02/并发编程的艺术/"/>
 
 
 
 
 
-  <title>Hexo</title>
+  <title>并发编程的艺术 | Hexo</title>
   
 
 
@@ -139,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -213,9 +218,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -245,9 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/02/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/" itemprop="url">并发编程的艺术</a></h1>
+          <h1 class="post-title" itemprop="name headline">并发编程的艺术</h1>
         
 
         <div class="post-meta">
@@ -297,9 +300,7 @@
       
 
       
-        
-          
-            <h3 id="避免死锁常见方法"><a href="#避免死锁常见方法" class="headerlink" title="避免死锁常见方法"></a>避免死锁常见方法</h3><ol>
+        <h3 id="避免死锁常见方法"><a href="#避免死锁常见方法" class="headerlink" title="避免死锁常见方法"></a>避免死锁常见方法</h3><ol>
 <li>避免一个线程同时获取多个锁</li>
 <li>避免一个线程在锁内同时占用多个资源,尽量保证每个锁只占用一个资源</li>
 <li>尝试使用定时锁,使用lock.tryLock(timeout)来代替使用内部锁机制</li>
@@ -410,8 +411,6 @@
 </ul>
 <h3 id="内存屏障类型表"><a href="#内存屏障类型表" class="headerlink" title="内存屏障类型表"></a>内存屏障类型表</h3><p><img src="C:%5CUsers%5CXIYIFEN%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1572512785719.png" alt="1572512785719"></p>
 
-          
-        
       
     </div>
     
@@ -428,133 +427,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/02/%E8%BF%AD%E4%BB%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/02/%E8%BF%AD%E4%BB%A3/" itemprop="url">迭代</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-02T19:53:31+08:00">
-                2019-11-02
-              </time>
+              <a href="/2019/11/02/%E8%BF%AD%E4%BB%A3/" rel="next" title="迭代">
+                <i class="fa fa-chevron-left"></i> 迭代
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h1 id="错误方式"><a href="#错误方式" class="headerlink" title="错误方式"></a>错误方式</h1><p>jfkdjdk</p>
-<p>就；dfdkf</p>
-<h3 id="标题一"><a href="#标题一" class="headerlink" title="标题一"></a>标题一</h3><h4 id="标题而"><a href="#标题而" class="headerlink" title="标题而"></a>标题而</h4>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -564,261 +458,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/02/test-my-site/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/02/test-my-site/" itemprop="url">test_my_site</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-02T17:42:59+08:00">
-                2019-11-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/02/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/02/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-02T17:34:47+08:00">
-                2019-11-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -826,6 +470,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -846,8 +494,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -898,6 +555,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#避免死锁常见方法"><span class="nav-number">1.</span> <span class="nav-text">避免死锁常见方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#volatile"><span class="nav-number">2.</span> <span class="nav-text">volatile</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可见性"><span class="nav-number">2.2.</span> <span class="nav-text">可见性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Synchronized"><span class="nav-number">3.</span> <span class="nav-text">Synchronized</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Synchronized实现同步的基础"><span class="nav-number">3.1.</span> <span class="nav-text">Synchronized实现同步的基础</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#锁"><span class="nav-number">3.2.</span> <span class="nav-text">锁</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、偏向锁"><span class="nav-number">3.2.1.</span> <span class="nav-text">1、偏向锁</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#锁对比"><span class="nav-number">3.3.</span> <span class="nav-text">锁对比</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java并发机制"><span class="nav-number">4.</span> <span class="nav-text">Java并发机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JMM（Java内存模型）"><span class="nav-number">5.</span> <span class="nav-text">JMM（Java内存模型）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Happens-before"><span class="nav-number">6.</span> <span class="nav-text">Happens-before</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重排序"><span class="nav-number">7.</span> <span class="nav-text">重排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Volatile的内存语义"><span class="nav-number">8.</span> <span class="nav-text">Volatile的内存语义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#锁的内存语义"><span class="nav-number">9.</span> <span class="nav-text">锁的内存语义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存屏障类型表"><span class="nav-number">10.</span> <span class="nav-text">内存屏障类型表</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1038,6 +711,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

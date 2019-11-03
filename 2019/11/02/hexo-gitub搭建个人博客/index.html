@@ -89,7 +89,9 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006k9aKugy1g8knxr9f5cj306d041glj.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006k9aKugy1g8knyi4iw5j30px0d4glt.jpg">
-<meta property="og:updated_time" content="2019-11-03T02:55:53.291Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006k9aKugy1g8kvykoeaoj30ox0bpwfi.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006k9aKugy1g8kwlx1kqqj309o0fzjro.jpg">
+<meta property="og:updated_time" content="2019-11-03T07:55:53.824Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;ww1.sinaimg.cn&#x2F;large&#x2F;006k9aKugy1g8knxr9f5cj306d041glj.jpg">
 
@@ -368,8 +370,48 @@
 
 <p>之后访问 localhost:4000,出现以下页面，安装成功。</p>
 <p><img src="http://ww1.sinaimg.cn/large/006k9aKugy1g8knyi4iw5j30px0d4glt.jpg" alt="image.png"></p>
-<h3 id="github图床"><a href="#github图床" class="headerlink" title="github图床"></a>github图床</h3><p>380fb0887258b6b331747cb5a3b3c5a5e3706a5f</p>
-<p><a href="https://raw.githubusercontent.com/xiyifen/blogimages/master" target="_blank" rel="noopener">https://raw.githubusercontent.com/xiyifen/blogimages/master</a></p>
+<h3 id="使用next主题"><a href="#使用next主题" class="headerlink" title="使用next主题"></a>使用next主题</h3><p>在blog目录里的_config.yml文件，是站点的配置文件</p>
+<p><img src="http://ww1.sinaimg.cn/large/006k9aKugy1g8kvykoeaoj30ox0bpwfi.jpg" alt="image.png"></p>
+<p>在themes里的主题也有_config.yml配置文件，是主题配置文件。</p>
+<p>使用git下载next主题</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+
+<p>themes目录下将会出现next文件夹。</p>
+<p>下一步将hexo 与github关联起来。打开站点的_config.yml配置文件，翻到最后，将最后改为以下配置(配置文件下的：后都需要一个空格)：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line">theme: next</span><br><span class="line"></span><br><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: https://github.com/xiyifen/xiyifen.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<h2 id="将博客部署到github"><a href="#将博客部署到github" class="headerlink" title="将博客部署到github"></a>将博客部署到github</h2><p>安装git部署插件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>执行以下三条命令，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean </span><br><span class="line">hexo g </span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>访问   用户名.github.io,部署成功。</p>
+<h2 id="自定义next"><a href="#自定义next" class="headerlink" title="自定义next"></a>自定义next</h2><h3 id="添加标签（tags）页面"><a href="#添加标签（tags）页面" class="headerlink" title="添加标签（tags）页面"></a>添加标签（tags）页面</h3><p>进入blog目录，输入如下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
+
+<p><code>source</code>下会新生成一个新的文件夹<code>tags</code>，在该文件夹下会有一个<code>index.md</code>文件。</p>
+<p>打开index.md，添加  <code>type: &quot;tags&quot;</code>  </p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: tags</span><br><span class="line">date: 2019-11-02 22:59:01</span><br><span class="line">type: "tags"</span><br></pre></td></tr></table></figure>
+
+<p>设置具体文件的tag</p>
+<p>当要为某一篇文章添加标签，只需在source/_post 目录下的具体文章的tags中添加标签即可，如：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: hexo+gitub搭建个人博客</span><br><span class="line">date: 2019-11-02 23:37:01</span><br><span class="line">tags: [搭建,github]</span><br></pre></td></tr></table></figure>
+
+<p>添加分类（categories）页面</p>
+<p>此部分操作与添加tag页面类似，将<code>tags</code> 替换为 <code>categories</code>即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">categories: 安装、搭建</span><br></pre></td></tr></table></figure>
+
+
+
+<p>最后，进入next主题的_config.yml文件，将以下内容修改，否则页面访问时为404.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / <span class="comment"># || home</span></span><br><span class="line">  <span class="comment">#about: /about/ || user</span></span><br><span class="line">  tags: /tags/ <span class="comment"># || tags</span></span><br><span class="line">  categories: /categories/ <span class="comment">#|| th</span></span><br><span class="line">  archives: /archives/ <span class="comment"># || archive</span></span><br><span class="line">  <span class="comment">#schedule: /schedule/ || calendar</span></span><br><span class="line">  <span class="comment">#sitemap: /sitemap.xml || sitemap</span></span><br><span class="line">  <span class="comment">#commonweal: /404/ || heartbeat</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Enable/Disable menu icons.</span></span><br><span class="line">menu_icons:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>效果如下：</p>
+<p><img src="http://ww1.sinaimg.cn/large/006k9aKugy1g8kwlx1kqqj309o0fzjro.jpg" alt="image.png"></p>
+<p>380fb0887258b6b331747cb5a3b3c5a5e3706a5f</p>
 <p><a href="https://www.zhihu.com/search?type=content&q=github图床" target="_blank" rel="noopener">https://www.zhihu.com/search?type=content&amp;q=github%E5%9B%BE%E5%BA%8A</a></p>
 <p><a href="https://www.zhihu.com/search?q=搭建博客&utm_content=search_history&type=content" target="_blank" rel="noopener">https://www.zhihu.com/search?q=%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2&amp;utm_content=search_history&amp;type=content</a></p>
 <p><a href="https://blog.csdn.net/zuoziji416/article/details/53204478" target="_blank" rel="noopener">https://blog.csdn.net/zuoziji416/article/details/53204478</a></p>
@@ -545,7 +587,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、Git环境"><span class="nav-number">1.</span> <span class="nav-text">一、Git环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、安装Node-js"><span class="nav-number">2.</span> <span class="nav-text">二、安装Node.js</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Hexo"><span class="nav-number">2.1.</span> <span class="nav-text">安装Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#github图床"><span class="nav-number">2.1.1.</span> <span class="nav-text">github图床</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、Git环境"><span class="nav-number">1.</span> <span class="nav-text">一、Git环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、安装Node-js"><span class="nav-number">2.</span> <span class="nav-text">二、安装Node.js</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Hexo"><span class="nav-number">2.1.</span> <span class="nav-text">安装Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用next主题"><span class="nav-number">2.1.1.</span> <span class="nav-text">使用next主题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将博客部署到github"><span class="nav-number">2.2.</span> <span class="nav-text">将博客部署到github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义next"><span class="nav-number">2.3.</span> <span class="nav-text">自定义next</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加标签（tags）页面"><span class="nav-number">2.3.1.</span> <span class="nav-text">添加标签（tags）页面</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
